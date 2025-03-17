@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H4CK3R Z0N3 - Leo's Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #00ff00;
+            --secondary-color: #00b4d8;
+            --background-color: #000000;
+            --text-color: #00ff00;
+            --neon-shadow: 0 0 10px rgba(0, 255, 0, 0.5),
+                           0 0 20px rgba(0, 255, 0, 0.3),
+                           0 0 30px rgba(0, 255, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Courier New', monospace;
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        #matrix-rain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 2px solid var(--primary-color);
+            margin-bottom: 40px;
+        }
+
+        .logo h1 {
+            font-size: 2.5em;
+            text-shadow: var(--neon-shadow);
+            animation: glitch 1s infinite;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 1.2em;
+            text-shadow: var(--neon-shadow);
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+            text-shadow: 0 0 10px var(--secondary-color);
+        }
+
+        .hero {
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .hero h1 {
+            font-size: 4em;
+            margin-bottom: 20px;
+            text-shadow: var(--neon-shadow);
+            animation: glitch 2s infinite;
+        }
+
+        .subtitle {
+            font-size: 1.5em;
+            margin-bottom: 40px;
+            color: var(--secondary-color);
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .neon-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 1.2em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            text-shadow: var(--neon-shadow);
+        }
+
+        .neon-button:hover {
+            background: var(--primary-color);
+            color: var(--background-color);
+            box-shadow: 0 0 20px var(--primary-color);
+        }
+
+        .about-me {
+            padding: 80px 0;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            margin: 40px 0;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .about-content h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-shadow: var(--neon-shadow);
+        }
+
+        .experience {
+            margin-top: 40px;
+        }
+
+        .experience-item {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid var(--primary-color);
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .experience-item:hover {
+            background: rgba(0, 255, 0, 0.1);
+            box-shadow: var(--neon-shadow);
+        }
+
+        .download-section {
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .download-section h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: var(--neon-shadow);
+        }
+
+        .loading {
+            display: none;
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: var(--secondary-color);
+            text-shadow: var(--neon-shadow);
+        }
+
+        @keyframes glitch {
+            0% {
+                text-shadow: 2px 2px var(--primary-color),
+                            -2px -2px var(--secondary-color);
+            }
+            25% {
+                text-shadow: -2px 2px var(--primary-color),
+                            2px -2px var(--secondary-color);
+            }
+            50% {
+                text-shadow: 2px -2px var(--primary-color),
+                            -2px 2px var(--secondary-color);
+            }
+            75% {
+                text-shadow: -2px -2px var(--primary-color),
+                            2px 2px var(--secondary-color);
+            }
+            100% {
+                text-shadow: 2px 2px var(--primary-color),
+                            -2px -2px var(--secondary-color);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .nav-links {
+                margin-top: 20px;
+            }
+
+            .nav-links a {
+                display: block;
+                margin: 10px 0;
+            }
+
+            .hero h1 {
+                font-size: 2.5em;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="matrix-rain"></canvas>
+    <div class="container">
+        <nav class="navbar">
+            <div class="logo">
+                <h1>H4CK3R Z0N3</h1>
+            </div>
+            <div class="nav-links">
+                <a href="#about" class="neon-button">About Me</a>
+                <a href="#download" class="neon-button">Download</a>
+            </div>
+        </nav>
+
+        <main class="hero">
+            <h1 class="glitch">Welcome to H4CK3R Z0N3</h1>
+            <p class="subtitle">Leo's Professional Portfolio</p>
+            <div class="cta-buttons">
+                <a href="#about" class="neon-button">Learn More</a>
+                <a href="#download" class="neon-button">Download Files</a>
+            </div>
+        </main>
+
+        <section id="about" class="about-me">
+            <div class="about-content">
+                <h2>About Me</h2>
+                <p>Hello, I'm Leo, a professional hacker and cybersecurity expert with over 25 years of experience in the field. From 2000 to 2025, I've been at the forefront of digital security and ethical hacking.</p>
+                
+                <div class="experience">
+                    <h3>Experience Timeline</h3>
+                    <div class="experience-item">
+                        <p><strong>2000-2010:</strong> Early career in system security and network penetration testing</p>
+                    </div>
+                    <div class="experience-item">
+                        <p><strong>2010-2020:</strong> Advanced cybersecurity consulting and ethical hacking</p>
+                    </div>
+                    <div class="experience-item">
+                        <p><strong>2020-2025:</strong> Leading cybersecurity initiatives and mentoring the next generation of hackers</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="download" class="download-section">
+            <h2>Download My Work</h2>
+            <p>Get access to my latest projects and tools</p>
+            <a href="#" class="neon-button" id="downloadBtn">Download Files</a>
+            <div class="loading" id="loadingText">Downloading...</div>
+        </section>
+    </div>
+
+    <script>
+        // Matrix Rain Effect
+        const canvas = document.getElementById('matrix-rain');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペ';
+        const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        const nums = '0123456789';
+        const alphabet = katakana + latin + nums;
+
+        const fontSize = 16;
+        const columns = canvas.width/fontSize;
+
+        const rainDrops = [];
+
+        for( let x = 0; x < columns; x++ ) {
+            rainDrops[x] = 1;
+        }
+
+        const draw = () => {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = '#0F0';
+            ctx.font = fontSize + 'px monospace';
+
+            for(let i = 0; i < rainDrops.length; i++) {
+                const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+                ctx.fillText(text, i*fontSize, rainDrops[i]*fontSize);
+                
+                if(rainDrops[i]*fontSize > canvas.height && Math.random() > 0.975){
+                    rainDrops[i] = 0;
+                }
+                rainDrops[i]++;
+            }
+        };
+
+        setInterval(draw, 30);
+
+        // Download functionality
+        document.getElementById('downloadBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Show loading animation
+            const loadingText = document.getElementById('loadingText');
+            loadingText.style.display = 'block';
+            
+            // Create the content for the .bat file
+            const content = `@echo off
+color 0a
+cls
+echo.
+echo    H4CK3R Z0N3 - Leo's Training Program
+echo    ===================================
+echo.
+timeout /t 2 >nul
+cls
+echo.
+echo    Initializing system...
+echo.
+timeout /t 1 >nul
+echo    Loading modules...
+timeout /t 1 >nul
+echo    Accessing mainframe...
+timeout /t 1 >nul
+echo    Decrypting data...
+timeout /t 1 >nul
+cls
+echo.
+echo    Welcome to Leo's Hacker Training Program!
+echo    ======================================
+echo.
+timeout /t 2 >nul
+echo    Step 1: Learn the Basics
+echo    ----------------------
+echo    1. Start with HTML, CSS, and JavaScript
+echo    2. Learn Python for automation
+echo    3. Study networking fundamentals
+echo    4. Understand operating systems
+echo.
+timeout /t 3 >nul
+echo    Step 2: Advanced Skills
+echo    ---------------------
+echo    1. Network security and penetration testing
+echo    2. Cryptography and encryption
+echo    3. System administration
+echo    4. Ethical hacking techniques
+echo.
+timeout /t 3 >nul
+echo    Step 3: Professional Development
+echo    -----------------------------
+echo    1. Get certified (CEH, CISSP, etc.)
+echo    2. Build a portfolio of projects
+echo    3. Join cybersecurity communities
+echo    4. Stay updated with latest threats
+echo.
+timeout /t 3 >nul
+echo    Remember: With great power comes great responsibility.
+echo    Use your knowledge wisely and ethically!
+echo.
+timeout /t 2 >nul
+echo    Press any key to exit...
+pause >nul
+cls
+echo.
+echo    Thank you for joining H4CK3R Z0N3!
+echo    Visit our website for more resources.
+echo.
+timeout /t 3 >nul
+exit`;
+
+            // Create a Blob with the content
+            const blob = new Blob([content], { type: 'text/plain' });
+            
+            // Create a download link
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'Hacker_Training.bat';
+            
+            // Trigger the download
+            document.body.appendChild(a);
+            a.click();
+            
+            // Cleanup
+            window.URL.revokeObjectURL(url);
+            document.body.removeChild(a);
+            
+            // Hide loading animation after a delay
+            setTimeout(() => {
+                loadingText.style.display = 'none';
+            }, 2000);
+        });
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
